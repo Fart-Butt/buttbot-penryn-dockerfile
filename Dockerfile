@@ -44,7 +44,37 @@ RUN python -m pip install --no-binary :all: "spacy-legacy>=3.0.11,<3.1.0"
 RUN python -m pip install --no-binary :all: "spacy-loggers>=1.0.0,<2.0.0"
 RUN python -m pip install --no-binary :all: "cymem>=2.0.2,<2.1.0"
 RUN python -m pip install --no-binary :all: "preshed>=3.0.2,<3.1.0"
-RUN BLIS_ARCH="generic" python -m pip install --no-binary :all: "thinc>=8.3.4,<8.4.0"
+RUN python -m pip install --no-binary :all: "murmurhash>=1.0.2,<1.1.0"
+RUN python -m pip install --no-binary :all: "cymem>=2.0.2,<2.1.0"
+RUN python -m pip install --no-binary :all: "preshed>=3.0.2,<3.1.0"
+RUN python -m pip install --no-binary :all: "blis>=1.3.0,<1.4.0"
+RUN python -m pip install --no-binary :all: "srsly>=2.4.0,<3.1.0"
+RUN python -m pip install --no-binary :all: "wasabi>=0.8.1,<1.2.0"
+RUN python -m pip install --no-binary :all: "catalogue>=2.0.4,<2.1.0"
+RUN python -m pip install --no-binary :all: "confection>=0.0.1,<1.1.0"
+RUN python -m pip install --no-binary :all: "ml_datasets>=0.2.0,<0.3.0"
+# Third-party dependencies
+RUN python -m pip install --no-binary :all: "pydantic>=2.0.0,<3.0.0"
+RUN python -m pip install --no-binary :all: "numpy>=2.0.0,<3.0.0"
+RUN python -m pip install --no-binary :all: "packaging>=20.0"
+# Development dependencies
+RUN python -m pip install --no-binary :all: "cython>=3.0,<4.0"
+RUN python -m pip install --no-binary :all: "hypothesis>=3.27.0,<6.149"
+RUN python -m pip install --no-binary :all: "pytest>=5.2.0,!=7.1.0"
+RUN python -m pip install --no-binary :all: "pytest-cov>=2.7.0,<8.0.0"
+RUN python -m pip install --no-binary :all: "coverage>=5.0.0,<8.0.0"
+RUN python -m pip install --no-binary :all: "flake8==5.0.4"
+RUN python -m pip install --no-binary :all: "mypy>=1.5.0,<1.6.0"
+# Executing notebook tests
+RUN python -m pip install --no-binary :all: "ipykernel>=5.1.4,<7.2"
+RUN python -m pip install --no-binary :all: "pydot"
+RUN python -m pip install --no-binary :all: "graphviz"
+RUN python -m pip install --no-binary :all: "nbconvert>=5.6.1,<7.17"
+RUN python -m pip install --no-binary :all: "nbformat>=5.0.4,<5.11"
+# Test to_disk/from_disk against pathlib.Path subclasses
+RUN python -m pip install --no-binary :all: "pathy>=0.3.5"
+RUN python -m pip install --no-binary :all: "black>=22.0,<23.0"
+RUN python -m pip install --no-binary :all: "isort>=5.0,<6.0"
 
 #download trained model
 #for buttbot and decomposer
