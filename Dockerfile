@@ -49,7 +49,7 @@ RUN python -m pip install --no-binary :all: "cymem>=2.0.2,<2.1.0"
 RUN python -m pip install --no-binary :all: "preshed>=3.0.2,<3.1.0"
 RUN python -m pip install "numpy>=2.0.0,<3.0.0"
 RUN python -m pip install pytest
-run pyhton -m pip install "hypothesis>=4.0.0,<7.0.0"
+RUN python -m pip install "hypothesis>=4.0.0,<7.0.0"
 RUN python -m pip install --no-binary :all: "blis>=1.3.0,<1.4.0"
 RUN python -m pip install --no-binary :all: "srsly>=2.4.0,<3.1.0"
 RUN python -m pip install --no-binary :all: "wasabi>=0.8.1,<1.2.0"
