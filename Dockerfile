@@ -48,7 +48,7 @@ RUN python -m pip install "murmurhash>=1.0.2,<1.1.0"
 RUN python -m pip install "cymem>=2.0.2,<2.1.0"
 RUN python -m pip install "preshed>=3.0.2,<3.1.0"
 #compile numpy from source
-ADD https://github.com/numpy/numpy.git ./
+ADD https://github.com/numpy/numpy.git .
 WORKDIR numpy
 RUN git submodule update --init && pip3 install .
 
