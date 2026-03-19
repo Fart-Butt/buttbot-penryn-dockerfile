@@ -37,7 +37,7 @@ WORKDIR /
 VOLUME /buttbot/logs
 
 #install requirements for mysqlclient and install mysqlclient
-RUN apt install -y python3-pip python3-dev default-libmysqlclient-dev build-essential pkg-config ninja-build dh-autoreconf gcc && python -m pip install -U pip setuptools wheel mysqlclient
+RUN apt install -y git python3-pip python3-dev default-libmysqlclient-dev build-essential pkg-config ninja-build dh-autoreconf gcc && python -m pip install -U pip setuptools wheel mysqlclient
 
 #RUN python -m pip install blis
 RUN python -m pip install "spacy-legacy>=3.0.11,<3.1.0"
@@ -50,7 +50,7 @@ RUN python -m pip install "preshed>=3.0.2,<3.1.0"
 #compile numpy from source
 ADD https://github.com/numpy/numpy.git ./
 WORKDIR numpy
-RUN pip3 install .
+RUN git submodule update --init && pip3 install .
 
 RUN python -m pip install pytest
 RUN python -m pip install "hypothesis>=4.0.0,<7.0.0"
