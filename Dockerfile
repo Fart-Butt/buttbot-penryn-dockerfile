@@ -47,10 +47,10 @@ RUN python -m pip install "preshed>=3.0.2,<3.1.0"
 RUN python -m pip install "murmurhash>=1.0.2,<1.1.0"
 RUN python -m pip install "cymem>=2.0.2,<2.1.0"
 RUN python -m pip install -"preshed>=3.0.2,<3.1.0"
-
+#compile numpy from source
 ADD https://github.com/numpy/numpy.git ./
 WORKDIR numpy
-pip3 install .
+RUN pip3 install .
 
 RUN python -m pip install pytest
 RUN python -m pip install "hypothesis>=4.0.0,<7.0.0"
