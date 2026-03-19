@@ -47,11 +47,10 @@ RUN python -m pip install "preshed>=3.0.2,<3.1.0"
 RUN python -m pip install "murmurhash>=1.0.2,<1.1.0"
 RUN python -m pip install "cymem>=2.0.2,<2.1.0"
 RUN python -m pip install "preshed>=3.0.2,<3.1.0"
-#compile numpy from source
-
-run git clone https://github.com/numpy/numpy.git
+#compile numpy from source and reference that directory here
+copy /compose/compiled/numpy /numpy
 WORKDIR /numpy
-RUN git submodule update --init && python -m pip install . -Csetup-args=-Dcpu-baseline="native" -Csetup-args=-Dcpu-dispatch="none"
+RUN python -m pip install .
 
 RUN python -m pip install pytest
 RUN python -m pip install "hypothesis>=4.0.0,<7.0.0"
