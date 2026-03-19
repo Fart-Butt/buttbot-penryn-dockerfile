@@ -37,17 +37,21 @@ WORKDIR /
 VOLUME /buttbot/logs
 
 #install requirements for mysqlclient and install mysqlclient
-RUN apt install -y python3-dev default-libmysqlclient-dev build-essential pkg-config ninja-build dh-autoreconf gcc && python -m pip install -U pip setuptools wheel mysqlclient
+RUN apt install -y python3-pip python3-dev default-libmysqlclient-dev build-essential pkg-config ninja-build dh-autoreconf gcc && python -m pip install -U pip setuptools wheel mysqlclient
 
 #RUN python -m pip install blis
-RUN python -m pip install --no-binary :all: "spacy-legacy>=3.0.11,<3.1.0"
-RUN python -m pip install --no-binary :all: "spacy-loggers>=1.0.0,<2.0.0"
-RUN python -m pip install --no-binary :all: "cymem>=2.0.2,<2.1.0"
-RUN python -m pip install --no-binary :all: "preshed>=3.0.2,<3.1.0"
-RUN python -m pip install --no-binary :all: "murmurhash>=1.0.2,<1.1.0"
-RUN python -m pip install --no-binary :all: "cymem>=2.0.2,<2.1.0"
-RUN python -m pip install --no-binary :all: "preshed>=3.0.2,<3.1.0"
-RUN python -m pip install "numpy>=2.0.0,<3.0.0"
+RUN python -m pip install "spacy-legacy>=3.0.11,<3.1.0"
+RUN python -m pip install "spacy-loggers>=1.0.0,<2.0.0"
+RUN python -m pip install "cymem>=2.0.2,<2.1.0"
+RUN python -m pip install "preshed>=3.0.2,<3.1.0"
+RUN python -m pip install "murmurhash>=1.0.2,<1.1.0"
+RUN python -m pip install "cymem>=2.0.2,<2.1.0"
+RUN python -m pip install -"preshed>=3.0.2,<3.1.0"
+
+ADD https://github.com/numpy/numpy.git ./
+WORKDIR numpy
+pip3 install .
+
 RUN python -m pip install pytest
 RUN python -m pip install "hypothesis>=4.0.0,<7.0.0"
 RUN python -m pip install "blis>=1.3.0,<1.4.0"
@@ -58,12 +62,6 @@ RUN python -m pip install "confection>=0.0.1,<1.1.0"
 RUN python -m pip install "ml_datasets>=0.2.0,<0.3.0"
 # Third-party dependencies
 RUN python -m pip install "pydantic>=2.0.0,<3.0.0"
-
-ADD https://github.com/numpy/numpy.git ./
-WORKDIR numpy
-pip3 install .
-
-
 RUN python -m pip install "packaging>=20.0"
 # Development dependencies
 RUN python -m pip install --no-binary :all: "cython>=3.0,<4.0"
