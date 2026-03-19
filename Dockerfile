@@ -51,7 +51,7 @@ RUN python -m pip install "preshed>=3.0.2,<3.1.0"
 
 run git clone https://github.com/numpy/numpy.git
 WORKDIR /numpy
-RUN git submodule update --init && pip3 install .
+RUN git submodule update --init && python -m pip install . -Csetup-args=-Dcpu-baseline="native" -Csetup-args=-Dcpu-dispatch="none"
 
 RUN python -m pip install pytest
 RUN python -m pip install "hypothesis>=4.0.0,<7.0.0"
