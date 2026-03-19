@@ -61,7 +61,7 @@ RUN python -m pip install "pydantic>=2.0.0,<3.0.0"
 
 ADD https://github.com/numpy/numpy.git ./
 WORKDIR numpy
-pip install .
+pip3 install .
 
 
 RUN python -m pip install "packaging>=20.0"
