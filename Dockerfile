@@ -50,18 +50,23 @@ RUN python -m pip install --no-binary :all: "preshed>=3.0.2,<3.1.0"
 RUN python -m pip install "numpy>=2.0.0,<3.0.0"
 RUN python -m pip install pytest
 RUN python -m pip install "hypothesis>=4.0.0,<7.0.0"
-RUN python -m pip install --no-binary :all: "blis>=1.3.0,<1.4.0"
+RUN python -m pip install "blis>=1.3.0,<1.4.0"
 RUN python -m pip install "srsly>=2.4.0,<3.1.0"
 RUN python -m pip install "wasabi>=0.8.1,<1.2.0"
 RUN python -m pip install "catalogue>=2.0.4,<2.1.0"
 RUN python -m pip install "confection>=0.0.1,<1.1.0"
-RUN python -m pip install --no-binary :all: "ml_datasets>=0.2.0,<0.3.0"
+RUN python -m pip install "ml_datasets>=0.2.0,<0.3.0"
 # Third-party dependencies
 RUN python -m pip install "pydantic>=2.0.0,<3.0.0"
-RUN python -m pip install "numpy>=2.0.0,<3.0.0"
+
+ADD https://github.com/numpy/numpy.git ./
+WORKDIR numpy
+pip install .
+
+
 RUN python -m pip install "packaging>=20.0"
 # Development dependencies
-RUN python -m pip install "cython>=3.0,<4.0"
+RUN python -m pip install --no-binary :all: "cython>=3.0,<4.0"
 RUN python -m pip install "hypothesis>=3.27.0,<6.149"
 RUN python -m pip install "pytest>=5.2.0,!=7.1.0"
 RUN python -m pip install "pytest-cov>=2.7.0,<8.0.0"
@@ -111,7 +116,7 @@ RUN python -m pip install "types-setuptools>=57.0.0"
 RUN python -m pip install "black>=25.0.0"
 RUN python -m pip install "cython-lint>=0.15.0"
 RUN python -m pip install "isort>=5.0,<6.0"
-
+run python -m pip install spacy
 
 
 #download trained model
